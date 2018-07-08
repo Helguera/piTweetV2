@@ -5,6 +5,7 @@
  */
 package BusinessLayer.Classes;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -14,8 +15,8 @@ import java.util.Date;
 public class Tweet {
     
     private String file_name;
-    private Date creation_date;
-    private Date publish_date;
+    private MyDate creation_date;
+    private MyDate publish_date;
     private String text;
     private String image1 = null;
     private String image2 = null;
@@ -26,7 +27,7 @@ public class Tweet {
         
     }
     
-    public Tweet(String file_name, String text, Date publish_date){
+    public Tweet(String file_name, String text, MyDate publish_date){
         this.file_name = file_name;
         this.text = text;
         this.publish_date = publish_date;
@@ -40,8 +41,12 @@ public class Tweet {
         this.text=text;
     }
     
-    public void setPublishDate(Date publish_date){
+    public void setPublishDate(MyDate publish_date){
         this.publish_date=publish_date;
+    }
+    
+    public void setCreationDate(MyDate creation_date){
+        this.creation_date = creation_date;
     }
     
     public void setImage1(String image1){
@@ -68,11 +73,11 @@ public class Tweet {
         return text;
     }
     
-    public Date getCreationDate(){
+    public MyDate getCreationDate(){
         return creation_date;
     } 
     
-    public Date getPublishDate(){
+    public MyDate getPublishDate(){
         return publish_date;
     }
     
