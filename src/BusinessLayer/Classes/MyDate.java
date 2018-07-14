@@ -35,4 +35,8 @@ public class MyDate {
     public String toString(){
         return sdf.format(calendar.getTime());
     }
+    
+    public Calendar getCalendar(){
+        return calendar;
+    }
 }
