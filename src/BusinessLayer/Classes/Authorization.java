@@ -16,10 +16,11 @@ import twitter4j.conf.ConfigurationBuilder;
 
 public class Authorization {
     
+    
     ConfigurationBuilder configBuilder = new ConfigurationBuilder();
     Twitter OAuthTwitter;
 
-    private String oAuthConsumerKey = "UOAWxdXJVnoxhgCOROc7SCc5m";
+    private String oAuthConsumerKey = "";
     private String oAuthConsumerSecret = "";  //DONT SHARE THIS KEY WITH ANYONE
     private String oAuthAccessToken = "";
     private String oAuthAccessTokenSecret = "";
@@ -60,12 +61,12 @@ public class Authorization {
         System.out.println("Success obtaining tokens.");
         System.out.println("Access Token: " + accessToken.getToken());
         System.out.println("Access Token secret: " + accessToken.getTokenSecret());
-        System.out.println("Those tokens are stored in auth_file.txt to use the next time you open the programm");
+        System.out.println("Those tokens are stored in auth_file.txt to use the next time you open the program");
         FileOutputStream fileOS = null;
         File file;
         String content = accessToken.getToken() + "\n" + accessToken.getTokenSecret();
         try {
-            file = new File("/home/javier/NetBeansProjects/piTweetV2/files/tweets/auth_file.txt");
+            file = new File("./auth_file.txt");
             fileOS = new FileOutputStream(file);
             if (!file.exists()) {
                 file.createNewFile();

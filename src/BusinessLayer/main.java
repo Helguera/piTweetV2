@@ -30,14 +30,14 @@ import twitter4j.TwitterException;
 public class main {
 
     // FILE LINE POSITIONS
-    public static int text_line = 2;
-    public static int publish_date_line = 3;
-    public static int image1_line = 4;
-    public static int image2_line = 5;
-    public static int image3_line = 6;
-    public static int image4_line = 7;
+    public static int text_line = 7;
+    public static int publish_date_line = 8;
+    public static int image1_line = 9;
+    public static int image2_line = 10;
+    public static int image3_line = 11;
+    public static int image4_line = 12;
 
-    public static String url = "/home/javier/NetBeansProjects/piTweetV2/files/tweets/";
+    public static String url = "./";
     public static ArrayList<Tweet> scheduled_tweets = new ArrayList<Tweet>();
     public static ArrayList<Tweet> scheduled_dm = new ArrayList<Tweet>();
 
@@ -55,15 +55,24 @@ public class main {
 
         readAuthFile();
 
-        //while (true) {
-            getFiles(files, url);
-            addFilesToDB(files);
-            if (publishThread == null) {
-                publishThread = new PublishThread();
-                publishThread.run();
-            }
-        //}
+        createPostedFolder();
 
+        getFiles(files, url);
+        addFilesToDB(files);
+        if (publishThread == null) {
+            publishThread = new PublishThread();
+            publishThread.run();
+        }
+
+    }
+
+    private static void createPostedFolder() {
+        File directory = new File("./Posted");
+        if (directory.exists()){ 
+        }else{
+            directory.mkdir();
+        }
+        
     }
 
     public void readFile() {
@@ -156,7 +165,7 @@ public class main {
         for (int i = 0; i < line.length(); i++) {
             if (line.charAt(i) == '=') {
                 result = line.substring(i + 1);
-                if (result.equals("")){
+                if (result.equals("") || result.equals(" ") || result.equals("  ")) {
                     result = null;
                 }
             }
@@ -165,7 +174,7 @@ public class main {
     }
 
     public static void readAuthFile() {
-        File file = new File(url + "auth_file.txt");
+        File file = new File(url + "./auth_file.txt");
         if (file.exists()) {
             String token = new String();
             String tokenSecret = new String();

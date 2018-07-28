@@ -29,7 +29,7 @@ public class MyDate {
        int hour = Integer.parseInt(date.substring(9, 11));
        int minute = Integer.parseInt(date.substring(12,14));
        //System.out.println(day +" "+ month +" "+ year +" "+ hour +" "+ minute);
-       calendar.set(year, month, day, hour, minute);
+       calendar.set(2000+year, month, day, hour, minute);
     }
     
     public String toString(){
